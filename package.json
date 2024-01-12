@@ -1,0 +1,43 @@
+{
+  "name": "anchor-nodejs",
+  "version": "0.1.0",
+  "description": "Node SDK for Anchor APIs written in typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "prepublishOnly": "pnpm build",
+    "preversion": "pnpm build"
+  },
+  "readme": "README.md",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/anchor.esm.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peoray/anchor-nodejs.git"
+  },
+  "keywords": [
+    "anchor"
+  ],
+  "author": "Emmanuel Raymond",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peoray/anchor-nodejs/issues"
+  },
+  "homepage": "https://github.com/peoray/anchor-nodejs#readme",
+  "dependencies": {
+    "@types/node": "^20.11.0",
+    "axios": "^1.6.5",
+    "tsdx": "^0.14.1",
+    "typescript": "^5.3.3"
+  }
+}
