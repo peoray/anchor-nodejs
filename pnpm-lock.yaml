@@ -18,6 +18,11 @@ dependencies:
     specifier: ^5.3.3
     version: registry.npmjs.org/typescript@5.3.3
 
+devDependencies:
+  tslib:
+    specifier: ^2.6.2
+    version: registry.npmjs.org/tslib@2.6.2
+
 packages:
 
   registry.npmjs.org/@ampproject/remapping@2.2.1:
@@ -8378,7 +8383,6 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz}
     name: tslib
     version: 2.6.2
-    dev: false
 
   registry.npmjs.org/tsutils@3.21.0(typescript@5.3.3):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/tsutils/-/tsutils-3.21.0.tgz}

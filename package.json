@@ -2,7 +2,7 @@
   "name": "anchor-nodejs",
   "version": "0.1.0",
   "description": "Node SDK for Anchor APIs written in typescript",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
@@ -12,7 +12,6 @@
     "preversion": "pnpm build"
   },
   "readme": "README.md",
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/anchor.esm.js",
   "files": [
@@ -39,5 +38,8 @@
     "axios": "^1.6.5",
     "tsdx": "^0.14.1",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "tslib": "^2.6.2"
   }
 }
