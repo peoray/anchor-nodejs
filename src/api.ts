@@ -1,10 +1,12 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
+import { getUrl } from './utils/url'
+import { IEnvironment } from './interfaces/env'
 
 export class AnchorCore {
   public request: AxiosInstance
-  constructor(apiKey: string) {
+  constructor(public apiKey: string, public environment?: IEnvironment) {
     this.request = axios.create({
-      baseURL: 'http://localhost:3000',
+      baseURL: getUrl(environment),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
