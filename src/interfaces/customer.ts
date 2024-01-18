@@ -27,6 +27,17 @@ interface IFullName {
   maidenName?: string
 }
 
+interface IBasicDetail {
+  businessName: string
+  businessBvn: string
+  industry: string
+  registrationType: string
+  dateOfRegistration: Date
+  description: string
+  country: string
+  website?: string
+}
+
 interface IndividualCustomer {
   type: 'IndividualCustomer'
   attributes: {
@@ -45,16 +56,7 @@ interface IndividualCustomer {
 interface BusinessCustomer {
   type: 'BusinessCustomer'
   attributes: {
-    basicDetail: {
-      businessName: string
-      businessBvn: string
-      industry: string
-      registrationType: string
-      dateOfRegistration: Date
-      description: string
-      country: string
-      website?: string
-    }
+    basicDetail: IBasicDetail
     contact: {
       phoneNumber: string
       email: {
@@ -259,3 +261,50 @@ export interface ICreateBusinessCustomerResponse {
     }
   }
 }
+
+interface IUpdateIndividualCustomer {
+  type: 'IndividualCustomer'
+  attributes: {
+    email: string
+    phoneNumber: string
+    description?: string
+    doingBusinessAs?: string
+    identificationLevel2?: IidentificationLevel2
+    identificationLevel3?: IidentificationLevel3
+  }
+}
+
+interface IUpdateBusinessCustomer {
+  type: 'BusinessCustomer'
+  attributes: {
+    basicDetail: IBasicDetail
+    contact: {
+      phoneNumber: string
+      email: {
+        general: string
+      }
+      address: {
+        main: IAddress
+        registered?: IAddress
+      }
+    }
+    officers: {
+      role: string
+      fullName: IFullName
+      dateOfBirth: Date
+      email: string
+      phoneNumber: string
+      nationality: string
+      address: IAddress
+      bvn: string
+      title?: string
+      percentageOwned: number
+    }[]
+  }
+}
+
+export interface IUpdateCustomer {
+  data: IUpdateIndividualCustomer | IUpdateBusinessCustomer
+}
+
+// export interface IUpdateCustomerResponse {}

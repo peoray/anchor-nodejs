@@ -4,6 +4,7 @@ import {
   ICreateBusinessCustomerResponse,
   ICreateCustomer,
   ICreateIndividualCustomerResponse,
+  IUpdateCustomer,
 } from '../../interfaces/customer'
 
 export class Customer extends AnchorCore {
@@ -22,12 +23,13 @@ export class Customer extends AnchorCore {
   }
 
   public async updateCustomer(
-    data: ICreateCustomer
+    customerId: string,
+    data: IUpdateCustomer
   ): Promise<
     ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
   > {
     return this.put<
       ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
-    >('/customers', data)
+    >(`/customers/update/${customerId}`, data)
   }
 }
