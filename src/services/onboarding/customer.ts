@@ -20,4 +20,14 @@ export class Customer extends AnchorCore {
       ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
     >('/customers', data)
   }
+
+  public async updateCustomer(
+    data: ICreateCustomer
+  ): Promise<
+    ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+  > {
+    return this.put<
+      ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    >('/customers', data)
+  }
 }
