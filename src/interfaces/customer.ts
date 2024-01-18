@@ -316,3 +316,9 @@ export interface IDeleteCustomerResponse {
     message: string
   }
 }
+
+export interface IOfficerRequirementResponse {
+  minimumDirectors: number
+  minimumOwners: number
+  minimumPercentageOwned: number
+}

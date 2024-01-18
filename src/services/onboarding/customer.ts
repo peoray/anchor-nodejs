@@ -5,6 +5,7 @@ import {
   ICreateCustomer,
   ICreateIndividualCustomerResponse,
   IDeleteCustomerResponse,
+  IOfficerRequirementResponse,
   IUpdateCustomer,
 } from '../../interfaces/customer'
 import { IQueryParams } from '../../interfaces/base'
@@ -63,5 +64,25 @@ export class Customer extends AnchorCore {
     customerId: string
   ): Promise<IDeleteCustomerResponse> {
     return this.delete<IDeleteCustomerResponse>(`/customers/${customerId}`)
+  }
+
+  public async searchCustomers(
+    params?: IQueryParams
+  ): Promise<
+    ICreateBusinessCustomerResponse[] | ICreateIndividualCustomerResponse[]
+  > {
+    return this.get<
+      ICreateBusinessCustomerResponse[] | ICreateIndividualCustomerResponse[]
+    >(`/customers/search`, { params })
+  }
+
+  public async officersRequirement(
+    customerId: string,
+    params?: IQueryParams
+  ): Promise<IOfficerRequirementResponse> {
+    return this.get<IOfficerRequirementResponse>(
+      `/customers/${customerId}/officers-requirement`,
+      { params }
+    )
   }
 }

@@ -6,4 +6,5 @@ export interface IQueryParams {
   size?: number
   sort?: string[]
   include?: string
+  searchValue?: string
 }
