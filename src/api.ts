@@ -44,6 +44,14 @@ export class AnchorCore {
     return this.handleRequest<T>(this.request.post(url, data, config))
   }
 
+  public async put<T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    return this.handleRequest<T>(this.request.put(url, data, config))
+  }
+
   public async patch<T>(
     url: string,
     data?: any,
