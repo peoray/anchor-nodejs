@@ -32,4 +32,18 @@ export class Customer extends AnchorCore {
       ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
     >(`/customers/update/${customerId}`, data)
   }
+
+  public async fetchCustomer(
+    customerId: string,
+    include?: string
+  ): Promise<
+    ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+  > {
+    const params = {
+      include,
+    }
+    return this.put<
+      ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    >(`/customers/${customerId}`, { params })
+  }
 }
