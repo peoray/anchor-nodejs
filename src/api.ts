@@ -16,18 +16,22 @@ export class AnchorCore {
   }
 
   public async get(url: string, params: any = {}): Promise<AxiosResponse> {
-    return this.request.get(url, { params })
+    const response = await this.request.get(url, { params })
+    return response?.data
   }
 
   public async post(url: string, data: any = {}): Promise<AxiosResponse> {
-    return this.request.post(url, data)
+    const response = await this.request.post(url, data)
+    return response?.data
   }
 
   public async patch(url: string, data: any = {}): Promise<AxiosResponse> {
-    return this.request.patch(url, data)
+    const response = await this.request.patch(url, data)
+    return response?.data
   }
 
   public async delete(url: string): Promise<AxiosResponse> {
-    return this.request.delete(url)
+    const response = await this.request.delete(url)
+    return response?.data
   }
 }
