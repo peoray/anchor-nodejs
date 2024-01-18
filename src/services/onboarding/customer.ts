@@ -6,6 +6,7 @@ import {
   ICreateIndividualCustomerResponse,
   IUpdateCustomer,
 } from '../../interfaces/customer'
+import { IQueryParams } from '../../interfaces/base'
 
 export class Customer extends AnchorCore {
   constructor(public apiKey: string, public environment?: IEnvironment) {
@@ -45,5 +46,15 @@ export class Customer extends AnchorCore {
     return this.put<
       ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
     >(`/customers/${customerId}`, { params })
+  }
+
+  public async listAllCustomer(
+    params?: IQueryParams
+  ): Promise<
+    ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+  > {
+    return this.put<
+      ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    >(`/customers`, { params })
   }
 }
