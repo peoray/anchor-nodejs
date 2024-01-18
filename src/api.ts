@@ -1,6 +1,12 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios'
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from 'axios'
 import { getUrl } from './utils/url'
 import { IEnvironment } from './interfaces/env'
+import { BaseError, handleAxiosError } from './utils/errors'
 
 export class AnchorCore {
   public request: AxiosInstance
@@ -15,23 +21,38 @@ export class AnchorCore {
     })
   }
 
-  public async get(url: string, params: any = {}): Promise<AxiosResponse> {
-    const response = await this.request.get(url, { params })
-    return response?.data
+  private async handleRequest<T>(
+    requestPromise: Promise<AxiosResponse<T>>
+  ): Promise<T> {
+    try {
+      const response = await requestPromise
+      return response.data
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error as AxiosError) })
+    }
   }
 
-  public async post(url: string, data: any = {}): Promise<AxiosResponse> {
-    const response = await this.request.post(url, data)
-    return response?.data
+  public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    return this.handleRequest<T>(this.request.get(url, config))
   }
 
-  public async patch(url: string, data: any = {}): Promise<AxiosResponse> {
-    const response = await this.request.patch(url, data)
-    return response?.data
+  public async post<T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    return this.handleRequest<T>(this.request.post(url, data, config))
   }
 
-  public async delete(url: string): Promise<AxiosResponse> {
-    const response = await this.request.delete(url)
-    return response?.data
+  public async patch<T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    return this.handleRequest<T>(this.request.patch(url, data, config))
+  }
+
+  public async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    return this.handleRequest<T>(this.request.delete(url, config))
   }
 }

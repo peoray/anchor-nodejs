@@ -1,7 +1,5 @@
-import { AxiosError } from 'axios'
 import { AnchorCore } from '../../api'
 import { IEnvironment } from '../../interfaces/env'
-import { BaseError, handleAxiosError } from '../../utils/errors'
 import {
   ICreateBusinessCustomerResponse,
   ICreateCustomer,
@@ -18,12 +16,8 @@ export class Customer extends AnchorCore {
   ): Promise<
     ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
   > {
-    try {
-      return this.post<
-        ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
-      >('/customers', data)
-    } catch (error) {
-      return new BaseError({ message: handleAxiosError(error as AxiosError) })
-    }
+    return this.post<
+      ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    >('/customers', data)
   }
 }
