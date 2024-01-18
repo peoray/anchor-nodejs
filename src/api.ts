@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
 } from 'axios'
 import { getUrl } from './utils/url'
-import { IEnvironment } from './interfaces/env'
+import { IEnvironment } from './types/env'
 import { BaseError, handleAxiosError } from './utils/errors'
 
 export class AnchorCore {

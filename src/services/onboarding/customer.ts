@@ -1,5 +1,5 @@
 import { AnchorCore } from '../../api'
-import { IEnvironment } from '../../interfaces/env'
+import { IEnvironment } from '../../types/env'
 import {
   ICreateBusinessCustomerResponse,
   ICreateCustomer,
@@ -7,8 +7,8 @@ import {
   IDeleteCustomerResponse,
   IOfficerRequirementResponse,
   IUpdateCustomer,
-} from '../../interfaces/customer'
-import { IQueryParams } from '../../interfaces/base'
+} from '../../types/customer'
+import { IQueryParams } from '../../types/base'
 
 export class Customer extends AnchorCore {
   constructor(public apiKey: string, public environment?: IEnvironment) {

@@ -1,4 +1,4 @@
-import { IEnvironment } from '../interfaces/env'
+import { IEnvironment } from '../types/env'
 
 export const getUrl = (env: IEnvironment = { sandbox: false }): string => {
   if (env.sandbox) {

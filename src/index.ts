@@ -1,1 +1,2 @@
-console.log('Index')
+export * from './anchor'
+export * from './types'
