@@ -308,3 +308,11 @@ export interface IUpdateCustomer {
 }
 
 // export interface IUpdateCustomerResponse {}
+
+export interface IDeleteCustomerResponse {
+  id: string
+  type: string
+  attributes: {
+    message: string
+  }
+}

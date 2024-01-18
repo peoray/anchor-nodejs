@@ -4,6 +4,7 @@ import {
   ICreateBusinessCustomerResponse,
   ICreateCustomer,
   ICreateIndividualCustomerResponse,
+  IDeleteCustomerResponse,
   IUpdateCustomer,
 } from '../../interfaces/customer'
 import { IQueryParams } from '../../interfaces/base'
@@ -43,7 +44,7 @@ export class Customer extends AnchorCore {
     const params = {
       include,
     }
-    return this.put<
+    return this.get<
       ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
     >(`/customers/${customerId}`, { params })
   }
@@ -51,10 +52,16 @@ export class Customer extends AnchorCore {
   public async listAllCustomer(
     params?: IQueryParams
   ): Promise<
-    ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    ICreateBusinessCustomerResponse[] | ICreateIndividualCustomerResponse[]
   > {
-    return this.put<
-      ICreateBusinessCustomerResponse | ICreateIndividualCustomerResponse
+    return this.get<
+      ICreateBusinessCustomerResponse[] | ICreateIndividualCustomerResponse[]
     >(`/customers`, { params })
+  }
+
+  public async deleteCustomer(
+    customerId: string
+  ): Promise<IDeleteCustomerResponse> {
+    return this.delete<IDeleteCustomerResponse>(`/customers/${customerId}`)
   }
 }
